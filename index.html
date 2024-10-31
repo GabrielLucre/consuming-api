@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo API</title>
+</head>
+
+<body>
+    <main>
+
+    </main>
+</body>
+
+<script>
+    async function getContent() {
+        try {
+            response = await fetch('http://localhost:4567/');
+            // console.log(response);
+            const data = await response.json();
+            show(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    getContent();
+
+    function show(users) {
+        let output = '';
+
+        for (let user of users) {
+            output += `<li>${user.name}</li>`;
+        }
+
+        document.querySelector('main').innerHTML = output;
+    }
+</script>
+
+</html>
